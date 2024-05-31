@@ -13,3 +13,17 @@ function calculateWeightedAverage(assignments, submissions) {
     const submission = submissions.find(
     (s) => s.assignment_id === assignment.id
     );
+
+    if (submission) {
+        const lateDeduction = isPastDue(assignment.due_at) ? 0.1 : 0;
+        const scorePercentage =
+        (submission.submission.score / assignment.points_possible) *
+        (1 - lateDeduction);
+      earnedPoints += scorePercentage * assignment.points_possible;
+    }
+
+    totalPoints += assignment.points_possible;
+    }
+
+    return totalPoints === 0 ? 0 : earnedPoints / totalPoints;
+}       
