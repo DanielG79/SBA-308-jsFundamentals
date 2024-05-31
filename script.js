@@ -27,3 +27,16 @@ function calculateWeightedAverage(assignments, submissions) {
 
     return totalPoints === 0 ? 0 : earnedPoints / totalPoints;
 }       
+
+// Main function to get learner data
+
+function getLearnerData(
+    courseInfo,
+    assignmentGroup,
+    learnerSubmissions
+) {
+  // Validate input data
+    if (assignmentGroup.course_id !== courseInfo.id) {
+    throw new Error("Invalid input: Assignment group does not belong to the course");
+    }
+    
